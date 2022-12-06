@@ -5,7 +5,7 @@ public class BinarySearch {
     public static void main(String[] args) {
 
         int elementArr[] = { 10, 20, 30, 40, 50, 60, 65, 67, 70 };
-        int searchElement = 67;
+        int searchElement = 8;
         int start = 0;
         int end = elementArr.length;
 
@@ -18,17 +18,20 @@ public class BinarySearch {
     }
 
     private static int binarySearch(int start, int end, int[] elementArr, int searchElement) {
-        int mid = start + (end - start) / 2;
 
-        if (elementArr[mid] == searchElement) {
-            System.out.println("Found in position " + mid);
-            return mid;
-        }
-        if (searchElement > elementArr[mid]) {
-            return binarySearch(mid + 1, elementArr.length, elementArr, searchElement);
-        }
-        if (searchElement < elementArr[mid]) {
-            return binarySearch(start, mid - 1, elementArr, searchElement);
+        if (end >= start && start <= elementArr.length - 1) {
+            int mid = start + (end - start) / 2;
+
+            if (elementArr[mid] == searchElement) {
+                System.out.println("Found in position " + mid);
+                return mid;
+            }
+            if (searchElement > elementArr[mid]) {
+                return binarySearch(mid + 1, elementArr.length, elementArr, searchElement);
+            }
+            if (searchElement < elementArr[mid]) {
+                return binarySearch(start, mid - 1, elementArr, searchElement);
+            }
         }
 
         return -1;
